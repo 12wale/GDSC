@@ -8,19 +8,19 @@ const tracks = [
         title: "UI/UX DESIGN",
         description:
             "Learn how to design intuitive, user-friendly digital experiences. Explore user research, wireframing, prototyping, and visual interface design.",
-        image: "/tracks/uiux.jpg",
+        image: "/about_resources/tracks/uiux.jpg",
     },
     {
         title: "FRONT-END DEVELOPMENT",
         description:
             "Learn how to turn designs into interactive and responsive websites. Explore HTML, CSS, JavaScript, and modern front-end tools.",
-        image: "/tracks/frontend.jpg",
+        image: "/about_resources/tracks/frontend.jpg",
     },
     {
         title: "BACK-END DEVELOPMENT",
         description:
             "Learn how to build the logic and infrastructure behind web applications. Explore databases, APIs, server-side programming, and application security.",
-        image: "/tracks/backend.jpg",
+        image: "/about_resources/tracks/backend.jpg",
     },
 ];
 
