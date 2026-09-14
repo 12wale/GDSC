@@ -14,10 +14,10 @@ export function Navbar() {
               <span className="font-bold text-gray-800 text-lg">GDSC Fayoum</span>
             </Link>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-600 hover:text-gray-900 font-medium text-sm">Home</Link>
-            <Link href="#about" className="text-gray-600 hover:text-gray-900 font-medium text-sm">About</Link>
+            <Link href="/about" className="text-gray-600 hover:text-gray-900 font-medium text-sm">About</Link>
             <Link href="#events" className="text-gray-600 hover:text-gray-900 font-medium text-sm">Events</Link>
             <Link href="#team" className="text-gray-600 hover:text-gray-900 font-medium text-sm">Team</Link>
             <Link href="#contact" className="text-gray-600 hover:text-gray-900 font-medium text-sm">Contact</Link>

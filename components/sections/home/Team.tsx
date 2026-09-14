@@ -23,58 +23,58 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { 
-    name: 'Mayar Lotfy', 
-    role: 'UI/UX Designer', 
+  {
+    name: 'Mayar Lotfy',
+    role: 'UI/UX Designer',
     image: '/staff_develope/mayar.jpg',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Mostafa Mohamed', 
-    role: 'Problem Solver & Code Reviewer', 
+  {
+    name: 'Mostafa Mohamed',
+    role: 'Problem Solver & Code Reviewer',
     image: '/staff_develope/mostafa.jpg',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Hend Elnashar', 
-    role: 'UI/UX Designer', 
+  {
+    name: 'Hend Elnashar',
+    role: 'UI/UX Designer',
     image: '/staff_develope/hend.jpg',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Waleed Refaat', 
-    role: 'MERN Stack Engineer', 
+  {
+    name: 'Waleed Refaat',
+    role: 'MERN Stack Engineer',
     image: '/staff_develope/waleed.jpg',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Mohamed Abdelnasser', 
-    role: 'MERN Stack Engineer', 
-    image: '/staff_develope/mo_nasser.jpg',
+  {
+    name: 'Mohamed Abdelnasser',
+    role: 'MERN Stack Engineer',
+    image: '/staff_develope/mo_nasser.png',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Mohamed Ramadan', 
-    role: 'Flutter Developer', 
+  {
+    name: 'Mohamed Ramadan',
+    role: 'Flutter Developer',
     image: '/staff_develope/mo_ramadan.jpg',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Omer Ahmed', 
-    role: 'AI Engineer', 
+  {
+    name: 'Omer Ahmed',
+    role: 'AI Engineer',
     image: '/staff_develope/omar.jpg',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Mohamed Sayed', 
-    role: 'Cyber Security Enthusiast', 
+  {
+    name: 'Mohamed Sayed',
+    role: 'Cyber Security Enthusiast',
     image: '/staff_develope/mo_said.jpg',
     facebook: 'https://facebook.com',
     linkedin: 'https://linkedin.com'
@@ -87,7 +87,7 @@ export function Team() {
   return (
     <section className="py-24 bg-gray-50/70 relative overflow-hidden" id="team">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        
+
         {/* Header with Navigation Controls */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
           <div>
@@ -102,14 +102,14 @@ export function Team() {
 
           {/* Custom Slider Navigation Arrows */}
           <div className="flex items-center gap-3">
-            <button 
+            <button
               onClick={() => swiperRef.current?.slidePrev()}
               aria-label="Previous Slide"
               className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200 bg-white text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95 cursor-pointer"
             >
               <FaChevronLeft size={14} />
             </button>
-            <button 
+            <button
               onClick={() => swiperRef.current?.slideNext()}
               aria-label="Next Slide"
               className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gray-200 bg-white text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95 cursor-pointer"
@@ -161,13 +161,13 @@ export function Team() {
             {teamMembers.map((member, index) => (
               <SwiperSlide key={index} className="h-auto">
                 <div className="group flex flex-col items-center bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
-                  
+
                   {/* Image Container */}
                   <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-gray-100 shadow-inner">
-                    <Image 
-                      src={member.image} 
-                      alt={member.name} 
-                      fill 
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
                       sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -176,10 +176,10 @@ export function Team() {
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 backdrop-blur-[2px]">
                       {/* Facebook Button */}
                       {member.facebook && (
-                        <a 
-                          href={member.facebook} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
+                        <a
+                          href={member.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           aria-label={`${member.name} Facebook`}
                           className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-md"
                         >
@@ -188,10 +188,10 @@ export function Team() {
                       )}
                       {/* LinkedIn Button */}
                       {member.linkedin && (
-                        <a 
-                          href={member.linkedin} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           aria-label={`${member.name} LinkedIn`}
                           className="w-10 h-10 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-md"
                         >
@@ -200,7 +200,7 @@ export function Team() {
                       )}
                     </div>
                   </div>
-                  
+
                   {/* Member Info */}
                   <div className="text-center w-full px-2 mt-auto">
                     <h3 className="font-bold text-gray-900 text-base md:text-lg mb-1 group-hover:text-blue-600 transition-colors line-clamp-1">
