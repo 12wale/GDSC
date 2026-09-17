@@ -93,7 +93,7 @@ export function About() {
               height={59}
               className="pointer-events-none absolute -right-[-50px] top-5 hidden w-[55px] md:block"
             />
-            <h2 className="mb-4 max-w-[380px] text-[20px] font-bold leading-[1.25] text-gray-900 md:text-[16px]">
+            <h2 className="mb-4 max-w-[380px] text-[24px] font-bold leading-[1.25] text-gray-900 md:text-[24px]">
               Our vision is to empower the next generation of innovators
             </h2>
             <p className="mb-6 max-w-[440px] text-[14px] leading-[1.65] text-gray-700 md:text-[13px]">

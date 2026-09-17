@@ -67,7 +67,7 @@ export function Team() {
             loop={true}
             speed={350}
             autoplay={{
-              delay: 3500,
+              delay: 1300,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}

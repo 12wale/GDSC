@@ -95,7 +95,7 @@ export default function OurTracks() {
 
                 <motion.a
                     href="#tracks"
-                    className="mx-auto mt-7 block w-fit text-base font-medium text-[#4285F4] underline underline-offset-4 transition-colors hover:text-[#1967D2]"
+                    className="mx-auto mt-7 block w-fit text-base font-medium text-[#20B15A] underline underline-offset-4 transition-colors hover:text-[#20b15ac4]"
                     initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
