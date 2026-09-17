@@ -1,170 +1,160 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import Image from 'next/image';
-
-interface EventItem {
-  src: string;
-  subtitle: string;
-  title: string;
-  type: string;
-  badgeBg: string;
-  badgeText: string;
-  description: string;
-}
+import { events } from '@/content/home';
+import { CursorFollowSvg } from '@/components/ui/CursorFollowSvg';
 
 export function Events() {
-  const [activeEvent, setActiveEvent] = useState<number>(0);
+  const prefersReducedMotion = useReducedMotion();
 
-  const eventsData: EventItem[] = [
-    {
-      src: '/ourEvents1.png',
-      subtitle: 'Our Scope',
-      title: 'GDSC SCOPE GAME',
-      type: 'Flagship Event',
-      badgeBg: 'bg-red-500/90',
-      badgeText: 'text-white',
-      description: 'The ultimate technical challenge and gamified problem-solving event designed to ignite innovation among developers.'
-    },
-    {
-      src: '/ourEvents2.png',
-      subtitle: 'Skilled Team',
-      title: 'Our Heroes',
-      type: 'Community',
-      badgeBg: 'bg-blue-500/90',
-      badgeText: 'text-white',
-      description: 'Celebrating the core team and tech leads who dedicate their passion to mentor and guide our student community.'
-    },
-    {
-      src: '/ourEvents3.png',
-      subtitle: 'Community Build',
-      title: 'Build Networking',
-      type: 'Social',
-      badgeBg: 'bg-amber-500/90',
-      badgeText: 'text-white',
-      description: 'Connecting aspiring developers, designers, and innovators to build lifelong connections and impactful projects.'
-    }
-  ];
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 36, scale: prefersReducedMotion ? 1 : 0.96 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: prefersReducedMotion ? 0.25 : 0.7,
+        delay: prefersReducedMotion ? 0 : index * 0.12,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    }),
+  };
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden" id="events">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <motion.div 
+    <section
+      className="relative overflow-hidden py-20"
+      id="events"
+      style={{
+        background:
+          'linear-gradient(110deg, rgba(194, 29, 30, 0.1) 10%, #FFFAF9 52%, rgba(255, 171, 4, 0.1) 90%)',
+      }}
+    >
+      <CursorFollowSvg
+        src="/home/events/events-left.svg"
+        width={110}
+        height={95}
+        className="pointer-events-none absolute left-0 top-8 w-20 sm:w-28"
+      />
+      <CursorFollowSvg
+        src="/home/events/events-right.svg"
+        width={110}
+        height={95}
+        className="pointer-events-none absolute right-0 top-0 w-20 sm:w-28"
+      />
+      <motion.div
+        className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-[#FFAB04]/10 blur-3xl"
+        animate={prefersReducedMotion ? undefined : { x: [0, -28, 0], y: [0, -18, 0], scale: [1, 1.08, 1] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-5xl px-6 sm:px-10 lg:px-16">
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex justify-between items-end mb-12 relative"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 flex flex-col items-start gap-2 sm:mb-10 sm:flex-row sm:items-center sm:gap-5"
         >
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-600 text-xs font-semibold uppercase tracking-wider mb-3">
-              <span>★</span> Featured Activities
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
-              Our Biggest Events
-            </h2>
-            <p className="text-gray-500 text-base max-w-xl">
-              Join our flagship events and workshops to learn, connect, and build amazing projects with fellow developers.
-            </p>
-          </div>
-          <button className="hidden md:flex bg-green-50 text-green-600 hover:bg-green-100 px-6 py-2.5 rounded-full font-medium transition-colors text-sm shadow-sm hover:shadow">
-            See All Events →
-          </button>
-          
-          {/* Decorative Scribble */}
-          <div className="absolute -right-8 -top-8 text-gray-200 pointer-events-none">
-            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M10 90c20-40 60-10 80-60 M30 90c20-40 60-10 80-60 M50 90c20-40 60-10 80-60" strokeLinecap="round"/>
-            </svg>
-          </div>
+          <h2 className="text-2xl font-bold tracking-tight text-[#0F0B0C] sm:text-3xl">
+            Our Biggest Event
+          </h2>
+          <p className="hidden max-w-md text-xs leading-5 text-[#0F0B0C] sm:block">
+            <span className="text-[#20B15A]">Tech Event 2023</span> Here at Google DSC Fayoum University,
+            we&apos;ve created a game just for you, where you&apos;re the hero
+          </p>
         </motion.div>
 
-        {/* Expandable Accordion Layout for 3 Events */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row gap-5 h-[700px] md:h-[480px] lg:h-[520px] w-full"
+          className="flex h-[520px] flex-col gap-4 sm:h-[400px] md:h-[290px] md:flex-row md:gap-5"
         >
-          {eventsData.map((e, index) => {
-            const isExpanded = activeEvent === index;
-
+          {events.map((e, index) => {
             return (
-              <div
+              // TODO: Replace this article with a Next.js Link when event detail routes exist.
+              <motion.article
                 key={e.title}
-                onMouseEnter={() => setActiveEvent(index)}
-                onClick={() => setActiveEvent(index)}
-                className={`relative rounded-3xl overflow-hidden cursor-pointer shadow-xl transition-all duration-500 ease-in-out group ${
-                  isExpanded
-                    ? 'md:flex-[3] flex-1'
-                    : 'md:flex-1 flex-[0.5]'
-                }`}
+                custom={index}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.25 }}
+                whileHover={
+                  prefersReducedMotion
+                    ? undefined
+                    : {
+                      flexGrow: index === 0 ? 2.3 : 1.45,
+                      y: -4,
+                      zIndex: 10,
+                      boxShadow: "0 24px 45px rgba(15, 11, 12, 0.25)",
+                      transition: { duration: 0.3, ease: "easeOut" },
+                    }
+                }
+                layout
+                transition={{
+                  layout: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+                }}
+                style={{ flexGrow: index === 0 ? 1.7 : 0.85 }}
+                className="group relative min-h-0 flex-1 basis-0 cursor-pointer overflow-hidden rounded-2xl shadow-md"
               >
-                {/* Event Image */}
-                <Image 
-                  src={e.src} 
-                  alt={e.title} 
-                  fill 
-                  priority={index === 0}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                <motion.div
+                  className="absolute inset-0"
+                  whileHover={prefersReducedMotion ? undefined : { scale: 1.08 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Image
+                    src={e.src}
+                    alt={e.title}
+                    fill
+                    priority={index === 0}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+                <motion.div
+                  className="absolute inset-0 z-[1] bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+                  initial={{ x: "-120%" }}
+                  whileHover={prefersReducedMotion ? undefined : { x: "120%" }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  aria-hidden="true"
                 />
-
-                {/* Ambient Dark Gradient Overlays */}
-                <div 
-                  className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-500 ${
-                    isExpanded 
-                      ? 'from-black/90 via-black/40 to-transparent opacity-90' 
-                      : 'from-black/85 via-black/50 to-black/30 opacity-95 group-hover:opacity-80'
-                  }`}
-                />
-
-                {/* Top Badge */}
-                <div className="absolute top-5 left-5 z-10">
-                  <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md shadow-sm ${e.badgeBg} ${e.badgeText}`}>
-                    {e.type}
-                  </span>
-                </div>
-
-                {/* Content Area */}
-                <div className="absolute bottom-6 left-6 right-6 text-white z-10 pointer-events-none">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-gray-300 mb-1">
+                <motion.div
+                  className="absolute bottom-4 left-4 right-4 z-10 text-white sm:bottom-5 sm:left-5"
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: prefersReducedMotion ? 0 : 0.25 + index * 0.12, duration: 0.45 }}
+                >
+                  <p className="text-[9px] font-semibold uppercase tracking-widest text-white/80">
                     {e.subtitle}
                   </p>
-                  <h3 className={`font-bold transition-all duration-300 ${
-                    isExpanded ? 'text-2xl lg:text-3xl mb-2' : 'text-xl md:text-lg lg:text-xl line-clamp-1'
-                  }`}>
+                  <h3 className="mt-1 text-lg font-medium leading-tight sm:text-xl">
                     {e.title}
                   </h3>
-
-                  {/* Expanded Description */}
-                  <div
-                    className={`overflow-hidden transition-all duration-500 ease-out ${
-                      isExpanded ? 'max-h-32 opacity-100 mt-2' : 'max-h-0 opacity-0'
-                    }`}
-                  >
-                    <p className="text-gray-200 text-sm line-clamp-2 max-w-lg leading-relaxed">
-                      {e.description}
-                    </p>
-                    <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 group-hover:text-white underline underline-offset-4">
-                      Explore Event Details →
-                    </div>
-                  </div>
-                </div>
-
-                {/* Subtle border highlight */}
-                <div className={`absolute inset-0 rounded-3xl pointer-events-none transition-colors duration-300 ${
-                  isExpanded ? 'border-2 border-white/30' : 'border border-white/10'
-                }`} />
-              </div>
+                </motion.div>
+              </motion.article>
             );
           })}
         </motion.div>
 
+        <motion.a
+          href="#events"
+          className="mx-auto mt-8 block w-fit text-sm font-medium text-[#20B15A] underline underline-offset-4 transition-colors hover:text-[#168844]"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
+          See more <span aria-hidden="true">→</span>
+        </motion.a>
       </div>
     </section>
   );

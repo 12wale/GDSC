@@ -1,84 +1,150 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from '../../ui/Button';
+import { CursorFollowSvg } from '@/components/ui/CursorFollowSvg';
+
 
 export function About() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const revealTransition = {
+    duration: prefersReducedMotion ? 0.25 : 0.7,
+    ease: [0.22, 1, 0.36, 1] as const,
+  };
+
   return (
-    <section className="py-16 md:py-24 bg-[#fef2e8] overflow-hidden" id="about">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        
+    <section className="m-auto flex w-full justify-center overflow-hidden bg-[#fef2e8] px-5 py-14 sm:px-8 md:px-10 md:py-24" id="about">
+      <div className="w-full max-w-7xl">
+
         {/* First Block: Who We Are */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16 md:mb-24 w-full"
+          transition={revealTransition}
+          className="mb-16 flex w-full flex-col items-center gap-8 md:mb-24 md:flex-row md:gap-12"
         >
-          <div className="w-full flex-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 text-orange-700 text-xs font-semibold uppercase tracking-wider mb-3">
-              <span>★</span> About GDSC Fayoum
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          <motion.div
+            className="w-full flex-1"
+            initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ ...revealTransition, delay: prefersReducedMotion ? 0 : 0.08 }}
+          >
+            <h2 className="text-[24px] font-bold text-gray-900 mb-[28px] leading-tight">
               Who We Are: Turning Curiosity into Impact
             </h2>
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+            <p className="text-gray-600 text-[16px] leading-relaxed">
               GDSC Fayoum is a community of passionate university students who are eager to learn, innovate, and create solutions that leave a positive mark on our local and global community.
             </p>
-          </div>
-          <div className="w-full flex-1">
-            <div className="relative w-full h-[260px] sm:h-[340px] md:h-[380px] rounded-2xl overflow-hidden shadow-xl bg-gray-100">
-              <Image 
-                src="/WhoWeAre.png" 
-                alt="GDSC Fayoum Team - Who We Are" 
-                fill 
+          </motion.div>
+          <motion.div
+            className="w-full flex-1"
+            initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 28, scale: prefersReducedMotion ? 1 : 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ ...revealTransition, delay: prefersReducedMotion ? 0 : 0.18 }}
+          >
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[21px] bg-gray-100 shadow-xl">
+              <Image
+                src="/home/about/who-we-are.png"
+                alt="GDSC Fayoum Team - Who We Are"
+                fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
                 priority
               />
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Second Block: Our Vision */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12 w-full"
+          transition={revealTransition}
+          className="flex w-full flex-col items-center gap-8 md:flex-row-reverse md:gap-12"
         >
-          <div className="w-full flex-1">
-            <div className="flex items-center gap-3 mb-4">
-               {/* Small badge icon */}
-               <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 shadow-sm">
-                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-               </div>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          <motion.div
+            className="relative w-full flex-1 md:pt-16"
+            initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ ...revealTransition, delay: prefersReducedMotion ? 0 : 0.08 }}
+          >
+            <CursorFollowSvg
+              src="/about/illustrations/about-mark.svg"
+              width={158}
+              height={87}
+              className="pointer-events-none absolute right-[80px] top-[-100px] hidden h-[87px] w-[158px] md:block"
+            />
+            <CursorFollowSvg
+              src="/about/illustrations/star-1.svg"
+              width={35}
+              height={34}
+              className="pointer-events-none absolute -right-[-100px] top-8 hidden w-[35px] md:block"
+            />
+            <CursorFollowSvg
+              src="/about/illustrations/vector.svg"
+              width={55}
+              height={59}
+              className="pointer-events-none absolute -right-[-50px] top-5 hidden w-[55px] md:block"
+            />
+            <h2 className="mb-4 max-w-[380px] text-[20px] font-bold leading-[1.25] text-gray-900 md:text-[16px]">
               Our vision is to empower the next generation of innovators
             </h2>
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6 md:mb-8">
+            <p className="mb-6 max-w-[440px] text-[14px] leading-[1.65] text-gray-700 md:text-[13px]">
               We envision a future where students use technology to solve real-world problems. We provide a space for peer-to-peer learning, hands-on workshops, and collaborative projects, helping students transition from learners to creators and leaders in the tech industry.
             </p>
-            <Button variant="primary" size="lg">
-              Join Us
-            </Button>
-          </div>
-          <div className="w-full flex-1">
-            <div className="relative w-full h-[260px] sm:h-[340px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl bg-gray-100">
-              <Image 
-                src="/ourVision.png" 
-                alt="GDSC Fayoum - Our Vision" 
-                fill 
+            <div className="flex justify-end md:pr-4">
+              <Button variant="primary" size="wide">
+                About Us
+                <Image
+                  src="/brand/leading.svg"
+                  alt=""
+                  width={20}
+                  height={20}
+                  aria-hidden="true"
+                />
+              </Button>
+            </div>
+          </motion.div>
+          <motion.div
+            className="w-full flex-1"
+            initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -28, scale: prefersReducedMotion ? 1 : 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ ...revealTransition, delay: prefersReducedMotion ? 0 : 0.18 }}
+          >
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[21px] bg-gray-100 shadow-xl">
+              <Image
+                src="/home/about/our-vision.png"
+                alt="GDSC Fayoum - Our Vision"
+                fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
-          </div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="mt-10 flex justify-center md:mt-14"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Image
+            src="/brand/gdsc-fayoum-mark.png"
+            alt="Google Developer Student Clubs Fayoum University"
+            width={120}
+            height={120}
+            className="h-[90px] w-[90px] object-contain md:h-[120px] md:w-[120px]"
+          />
         </motion.div>
 
       </div>

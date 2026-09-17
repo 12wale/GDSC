@@ -11,6 +11,7 @@ import {
     useTransform,
     type Variants,
 } from 'framer-motion';
+import { CursorFollowSvg } from '@/components/ui/CursorFollowSvg';
 
 const particleColors = ['#20B15A', '#FFAB04', '#4285F4', '#C21D1E', '#FF6B6B', '#8B5CF6'];
 
@@ -128,21 +129,17 @@ export default function AboutUs() {
                         transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' }}
                     >
 
-                        <Image
-                            src="/about_resources/imgs/Star 1.svg"
-                            alt=""
+                        <CursorFollowSvg
+                            src="/about/illustrations/star-1.svg"
                             width={55}
                             height={59}
-                            className="absolute left-0 top-[8px] h-[27px] w-[28px] md:left-[70px] md:top-[40px] md:h-[33.54px] md:w-[34.11px]"
-                            aria-hidden="true"
+                            className="absolute left-0 top-[8px] w-[28px] md:left-[70px] md:top-[40px] md:w-[34.11px]"
                         />
-                        <Image
-                            src="/about_resources/imgs/Vector.svg"
-                            alt=""
+                        <CursorFollowSvg
+                            src="/about/illustrations/vector.svg"
                             width={35}
                             height={34}
-                            className="absolute left-[24px] top-0 h-[44px] w-[41px] md:left-[100px] md:top-[30px] md:h-[55.22px] md:w-[51.15px]"
-                            aria-hidden="true"
+                            className="absolute left-[24px] top-0 w-[41px] md:left-[100px] md:top-[30px] md:w-[51.15px]"
                         />
                     </motion.div>
                     <motion.h1
@@ -154,15 +151,9 @@ export default function AboutUs() {
                     leading-[1.16]
                     tracking-normal
                     text-black
-                    transition-[color,-webkit-text-stroke] duration-300
-                    hover:text-transparent
-                    hover:[-webkit-text-stroke:1.5px_#20AE63]
                     sm:text-[48px]
                     md:text-[60px]
                 "
-                        variants={contentVariants}
-                        whileHover={{ scale: 1.015 }}
-                        transition={{ type: "spring", stiffness: 220, damping: 18 }}
                     >
                         <span>
                             Who <span className="text-[#20AE63]">We Are</span>
@@ -222,7 +213,7 @@ export default function AboutUs() {
                         className="transition-transform duration-700"
                     >
                         <Image
-                            src="/about_resources/imgs/aboutus-image.png"
+                            src="/about/illustrations/about-us-image.png"
                             alt="About us"
                             width={976}
                             height={628}

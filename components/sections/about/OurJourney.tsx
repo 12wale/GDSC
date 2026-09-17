@@ -9,29 +9,7 @@ import {
     type Variants,
 } from "framer-motion";
 import { useRef } from "react";
-
-const journeyItems = [
-    {
-        year: "2022–2023",
-        description:
-            "GDSC Fayoum University began its journey by building a student community passionate about technology. From the very first season, we were able to reach a large number of students and create a space where they could connect, learn, and explore technology together.",
-    },
-    {
-        year: "2023–2024",
-        description:
-            "The community continued to grow, with more students joining and engaging with GDSC. We focused on strengthening our presence within the university and creating a stronger sense of community among students interested in technology.",
-    },
-    {
-        year: "2024–2025",
-        description:
-            "We focused on building a stronger and more organized community while expanding our activities and opportunities for students. Our goal was to create experiences that helped students learn, develop their skills, and connect with others.",
-    },
-    {
-        year: "2025–2026",
-        description:
-            "Our journey reached a new level of impact. The community grew to 350+ students, while our events and activities reached 500+ students. We also expanded our focus beyond technology to include leadership, entrepreneurship, career development, and soft skills. 4 Years. Hundreds of Students. One Community.",
-    },
-];
+import { journeyItems } from "@/content/about";
 
 const itemVariants: Variants = {
     hidden: { opacity: 0, y: 28 },
@@ -85,17 +63,17 @@ export default function OurJourney() {
                 </motion.h2>
 
                 <div ref={timelineRef} className="relative">
-                    <div className="absolute bottom-0 left-0 top-0 w-[37px]">
+                    <div className="absolute bottom-0 left-0 top-0 w-[32px]">
                         <div className="absolute inset-y-0 left-[15px] w-px bg-[#B9DFC8]" />
                         <motion.div
                             className="absolute inset-0"
                             style={{ clipPath: stepperClip }}
                         >
                             <Image
-                                src="/about_resources/imgs/Stepper Vertical.svg"
+                                src="/about/timeline/stepper-vertical.svg"
                                 alt=""
                                 fill
-                                sizes="37px"
+                                sizes="32px"
                                 className="h-full w-full"
                                 aria-hidden="true"
                             />

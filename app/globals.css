@@ -24,6 +24,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  scrollbar-color: #20b15a #fef2e8;
+  scrollbar-width: thin;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fef2e8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #20b15a 0%, #168844 100%);
+  border: 2px solid #fef2e8;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #168844;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Swiper slider styling & containment */
@@ -38,13 +68,18 @@ body {
 }
 
 .team-swiper .swiper-pagination-bullet {
+  width: 5px;
+  height: 5px;
+  margin: 0 5px !important;
   background: #cbd5e1;
   opacity: 1;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
 .team-swiper .swiper-pagination-bullet-active {
-  background: #4285F4 !important;
+  background: #20b15a !important;
   width: 24px !important;
+  height: 6px !important;
+  margin: 0 5px !important;
   border-radius: 9999px !important;
 }

@@ -15,10 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GDSC",
-  description: "Impact Meaker",
+  title: {
+    default: "GDSC Fayoum",
+    template: "%s | GDSC Fayoum",
+  },
+  description:
+    "Google Developer Student Clubs Fayoum University - a student community learning, building, and growing together through technology.",
   icons:{
-    icon: '/logo.png'
+    icon: '/brand/logo.png'
   }
 };
 

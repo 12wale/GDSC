@@ -2,27 +2,7 @@
 
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-
-const tracks = [
-    {
-        title: "UI/UX DESIGN",
-        description:
-            "Learn how to design intuitive, user-friendly digital experiences. Explore user research, wireframing, prototyping, and visual interface design.",
-        image: "/about_resources/tracks/uiux.jpg",
-    },
-    {
-        title: "FRONT-END DEVELOPMENT",
-        description:
-            "Learn how to turn designs into interactive and responsive websites. Explore HTML, CSS, JavaScript, and modern front-end tools.",
-        image: "/about_resources/tracks/frontend.jpg",
-    },
-    {
-        title: "BACK-END DEVELOPMENT",
-        description:
-            "Learn how to build the logic and infrastructure behind web applications. Explore databases, APIs, server-side programming, and application security.",
-        image: "/about_resources/tracks/backend.jpg",
-    },
-];
+import { tracks } from "@/content/home";
 
 const cardVariants: Variants = {
     hidden: { opacity: 0, y: 32 },
@@ -37,11 +17,7 @@ export default function OurTracks() {
     return (
         <section
             id="tracks"
-            className="relative w-full overflow-hidden px-5 py-14 sm:px-8 md:px-12 md:py-16"
-            style={{
-                background:
-                    "linear-gradient(110deg, rgba(194, 29, 30, 0.1) 10%, #FFFAF9 52%, rgba(255, 171, 4, 0.1) 90%)",
-            }}
+            className="relative w-full overflow-hidden bg-white px-5 py-14 sm:px-8 md:px-12 md:py-16"
         >
             <motion.div
                 className="pointer-events-none absolute -left-24 bottom-10 h-64 w-64 rounded-full bg-white/60 blur-3xl"

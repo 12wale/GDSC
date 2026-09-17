@@ -2,8 +2,31 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { FaFacebook, FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
+import { CursorFollowSvg } from '@/components/ui/CursorFollowSvg';
+
+function FooterMaskDecoration({
+  src,
+  className,
+}: {
+  src: string;
+  className: string;
+}) {
+  return (
+    <motion.div
+      className={className}
+      style={{
+        maskImage: `url('${src}')`,
+        WebkitMaskImage: `url('${src}')`,
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat',
+        maskSize: 'contain',
+        WebkitMaskSize: 'contain',
+      }}
+      aria-hidden="true"
+    />
+  );
+}
 
 export function Footer() {
   const socialLinks = [
@@ -30,78 +53,84 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#fef2e8] pt-16 pb-8 border-t border-orange-100 overflow-hidden">
-      <motion.div 
+    <footer
+      className="relative overflow-hidden border-t border-orange-100 pb-6 pt-14 sm:pt-16"
+      style={{
+        background:
+          'linear-gradient(98.75deg, rgba(194, 29, 30, 0.2) 38.01%, rgba(250, 187, 4, 0.2) 58.75%)',
+      }}
+    >
+      <CursorFollowSvg
+        src="/brand/spring.svg"
+        alt=""
+        width={103}
+        height={77}
+        className="pointer-events-none absolute left-8 top-24 hidden w-20 opacity-90 sm:block"
+      />
+      <FooterMaskDecoration
+        src="/about/illustrations/star-1.svg"
+        className="pointer-events-none absolute right-16 top-30 hidden h-12 w-9 bg-[#FEBF00] sm:block"
+      />
+      <FooterMaskDecoration
+        src="/about/illustrations/vector.svg"
+        className="pointer-events-none absolute right-6 top-24 hidden h-12 w-12 bg-[#FEBF00] sm:block"
+      />
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "50px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="mx-auto max-w-[820px] px-5 sm:px-8"
       >
-        <div className="text-center mb-12 relative">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 text-orange-700 text-xs font-semibold uppercase tracking-wider mb-3">
-            <span>✦</span> Community & Connection
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+        <div className="relative mb-10 text-center sm:mb-12">
+          <h2 className="mb-3 text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">
             Discover Our Latest Activities
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            Stay connected with all our latest news and events. Be part of our growing community and help shape the future of technology with GDSC Fayoum.
+          <p className="mx-auto max-w-[560px] text-xs leading-5 text-[#666666] sm:text-sm">
+            Stay informed with all the latest updates and news about our events. Never miss a moment of our exciting and innovative gatherings in the world of technology and beyond.
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+        <div className="mb-8 flex flex-col items-center gap-7 sm:mb-9 md:flex-row md:items-center md:justify-between">
           {/* Logo & Chapter Brand */}
-          <div className="flex items-center gap-3">
-            <Image 
-              src="/logo.png" 
-              alt="GDSC Logo" 
-              width={42} 
-              height={42} 
-              className="object-contain" 
-            />
-            <span className="font-bold text-gray-900 text-xl tracking-tight">
-              GDSC <span className="text-orange-500">Fayoum</span>
+          <div className="flex items-center">
+            <span className="text-lg font-bold tracking-tight text-[#20B15A]">
+              GDSC Fayoum
             </span>
           </div>
 
           {/* Quick Navigation Links */}
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-sm font-medium text-gray-700">
-            <a href="#" className="hover:text-orange-500 transition-colors">Home</a>
-            <a href="#about" className="hover:text-orange-500 transition-colors">About Us</a>
-            <a href="#events" className="hover:text-orange-500 transition-colors">Events</a>
-            <a href="#team" className="hover:text-orange-500 transition-colors">Team</a>
-            <a href="#contact" className="hover:text-orange-500 transition-colors">Contact</a>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs font-medium text-[#555555]">
+            <a href="#" className="transition-colors hover:text-[#20B15A]">About</a>
+            <a href="#events" className="transition-colors hover:text-[#20B15A]">Events</a>
+            <a href="#contact" className="transition-colors hover:text-[#20B15A]">Contact Us</a>
+            <a href="/about" className="transition-colors hover:text-[#20B15A]">About</a>
+            <a href="#" className="transition-colors hover:text-[#20B15A]">Join Us</a>
           </div>
 
-          {/* Orange Themed Social Icons */}
-          <div className="flex items-center gap-3">
+          {/* Social Icons */}
+          <div className="flex items-center gap-2">
             {socialLinks.map((social) => (
-              <a 
+              <a
                 key={social.name}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="w-10 h-10 rounded-full border border-orange-200 bg-white text-orange-500 shadow-sm flex items-center justify-center transition-all duration-300 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:scale-110 active:scale-95"
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-[#FABB04] bg-transparent text-[#FABB04] transition-all duration-200 hover:bg-[#FABB04] hover:text-white hover:scale-105 active:scale-95"
               >
-                {social.icon}
+                {React.cloneElement(social.icon, { size: 13 })}
               </a>
             ))}
           </div>
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 pt-8 border-t border-orange-200/60 gap-4">
-          <p>© {new Date().getFullYear()} Google Developer Student Clubs Fayoum. All Rights Reserved.</p>
-          <div className="flex items-center gap-2">
-             <Image src="/logo.png" alt="GDSC Logo" width={22} height={22} className="object-contain" />
-             <span className="font-semibold text-gray-700">Google Developer Student Clubs</span>
-          </div>
-          <div className="flex space-x-4">
-            <a href="#" className="hover:text-orange-600 transition-colors">Privacy Policy</a>
-            <span>•</span>
-            <a href="#" className="hover:text-orange-600 transition-colors">Terms of Service</a>
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-[#D4CFC9] pt-6 text-[10px] text-[#555555] sm:flex-row">
+          <p>Copyright © Designmonks All Rights Reserved</p>
+          <div className="flex items-center gap-4">
+            <a href="#" className="transition-colors hover:text-[#20B15A]">Terms &amp; Conditions</a>
+            <a href="#" className="transition-colors hover:text-[#20B15A]">Privacy Policy</a>
           </div>
         </div>
       </motion.div>
