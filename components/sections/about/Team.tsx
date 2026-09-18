@@ -19,6 +19,14 @@ export function Team() {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeMember, setActiveMember] = useState<number | null>(null);
 
+  const pauseAutoplay = () => {
+    swiperRef.current?.autoplay.stop();
+  };
+
+  const resumeAutoplay = () => {
+    swiperRef.current?.autoplay.start();
+  };
+
   return (
     <section
       className="relative w-screen self-center overflow-hidden py-24"
@@ -132,6 +140,10 @@ export function Team() {
                       setActiveMember((current) => (current === index ? null : index));
                     }
                   }}
+                  onPointerEnter={pauseAutoplay}
+                  onPointerLeave={resumeAutoplay}
+                  onPointerDown={pauseAutoplay}
+                  onPointerUp={resumeAutoplay}
                 >
                   <div className="relative h-[240px] w-full shrink-0 overflow-hidden bg-[#D9D9D9]">
                     <Image
