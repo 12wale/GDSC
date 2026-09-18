@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { FaFacebook, FaLinkedin, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
@@ -17,6 +17,7 @@ import 'swiper/css/pagination';
 
 export function Team() {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [activeMember, setActiveMember] = useState<number | null>(null);
 
   return (
     <section
@@ -32,7 +33,7 @@ export function Team() {
         {/* Header with Navigation Controls */}
         <div className="relative mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div
-            className="pointer-events-none absolute left-[350px] top-[-8px] hidden h-[52px] w-[48px] rotate-[10deg] bg-[#FEBF00] sm:block"
+            className="pointer-events-none absolute left-[58%] top-[-8px] h-[42px] w-[40px] rotate-[10deg] bg-[#FEBF00] sm:left-[350px] sm:h-[52px] sm:w-[48px]"
             style={{
               maskImage: "url('/about/illustrations/vector.svg')",
               WebkitMaskImage: "url('/about/illustrations/vector.svg')",
@@ -48,7 +49,7 @@ export function Team() {
             alt=""
             width={76.45626068115234}
             height={121.69682312011719}
-            className="pointer-events-none absolute right-0 top-[-80px] hidden h-[121.69682312011719px] w-[76.45626068115234px] opacity-80 sm:block"
+            className="pointer-events-none absolute right-0 top-[-28px] h-[82px] w-[52px] opacity-80 sm:top-[-80px] sm:h-[121.69682312011719px] sm:w-[76.45626068115234px]"
             aria-hidden="true"
           />
           <div className="relative z-[1]">
@@ -96,31 +97,43 @@ export function Team() {
               dynamicBullets: true,
             }}
             slidesPerView={1}
-            spaceBetween={16}
+            spaceBetween={24}
             breakpoints={{
               480: {
                 slidesPerView: 1.5,
-                spaceBetween: 16,
+                spaceBetween: 24,
               },
               640: {
                 slidesPerView: 2,
-                spaceBetween: 20,
+                spaceBetween: 24,
               },
               768: {
                 slidesPerView: 3,
-                spaceBetween: 20,
+                spaceBetween: 24,
               },
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 24,
+                spaceBetween: 28,
               },
             }}
             className="w-full !pb-14 team-swiper"
           >
             {teamMembers.map((member, index) => (
               <SwiperSlide key={index} className="h-auto">
-                <div className="group mx-auto flex h-[325px] w-full max-w-[307px] flex-col overflow-hidden rounded-[18px] border border-[#E6E6E6] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(15,23,42,0.14)]">
-                  <div className="relative mx-auto h-[240px] w-full max-w-[270px] shrink-0 overflow-hidden bg-[#D9D9D9]">
+                <div
+                  className="group mx-auto flex h-[325px] w-full max-w-[307px] cursor-pointer flex-col overflow-hidden rounded-[18px] border border-[#E6E6E6] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(15,23,42,0.14)]"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Show social links for ${member.name}`}
+                  onClick={() => setActiveMember((current) => (current === index ? null : index))}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      setActiveMember((current) => (current === index ? null : index));
+                    }
+                  }}
+                >
+                  <div className="relative h-[240px] w-full shrink-0 overflow-hidden bg-[#D9D9D9]">
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -129,7 +142,11 @@ export function Team() {
                       className="object-cover object-[center_top]"
                     />
 
-                    <div className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+                    <div className={`absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 transition-opacity duration-300 ${
+                      activeMember === index
+                        ? 'pointer-events-auto opacity-100'
+                        : 'pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100'
+                    }`}>
                       {member.facebook && (
                         <a
                           href={member.facebook}
