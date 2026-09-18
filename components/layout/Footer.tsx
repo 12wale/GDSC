@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaFacebook, FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
 import { CursorFollowSvg } from '@/components/ui/CursorFollowSvg';
 
@@ -154,8 +155,17 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-[#D4CFC9] pt-6 text-[10px] text-[#555555] sm:flex-row">
+        <div className="relative flex flex-col items-center justify-between gap-4 border-t border-[#D4CFC9] pt-6 text-[10px] text-[#555555] sm:min-h-[100px] sm:flex-row">
           <p>Copyright © Designmonks All Rights Reserved</p>
+          <div className="order-first flex items-center sm:absolute sm:left-1/2 sm:top-4 sm:order-none sm:-translate-x-1/2">
+            <Image
+              src="/brand/footer-logo.png"
+              alt="GDSC Fayoum logo"
+              width={73}
+              height={73}
+              className="h-[73px] w-[73px] object-contain"
+            />
+          </div>
           <div className="flex items-center gap-4">
             <a href="#" className="transition-colors hover:text-[#20B15A]">Terms &amp; Conditions</a>
             <a href="#" className="transition-colors hover:text-[#20B15A]">Privacy Policy</a>
