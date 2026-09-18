@@ -85,12 +85,12 @@ export default function AboutUs() {
     };
 
     return (
-        <div className='w-full flex justify-center mt-[30px]' style={{
+        <div className='flex w-full justify-center' style={{
             background: 'linear-gradient(105deg, rgba(255, 171, 4, 0.1) 10%, #FFFAF9 48%, rgba(194, 29, 30, 0.1) 90%)',
         }}>
             <section
                 ref={sectionRef}
-                className="relative w-full overflow-hidden mt-[24px] px-6 py-12 sm:px-10 md:px-[49.25px] md:py-16 flex items-center justify-center flex-col"
+                className="relative flex w-full flex-col items-center justify-center overflow-hidden px-6 py-12 sm:px-10 md:px-[49.25px] md:py-16"
             >
                 <motion.div
                     className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-[#FFAB04]/10 blur-3xl"
@@ -154,14 +154,31 @@ export default function AboutUs() {
                     sm:text-[48px]
                     md:text-[60px]
                 "
+                        variants={contentVariants}
                     >
-                        <span>
+                        <motion.span
+                            className="inline-block"
+                            variants={{
+                                hidden: { opacity: 0, y: 24 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } },
+                            }}
+                        >
                             Who <span className="text-[#20AE63]">We Are</span>
-                        </span>
+                        </motion.span>
                         <br />
-                        <span>
+                        <motion.span
+                            className="inline-block"
+                            variants={{
+                                hidden: { opacity: 0, y: 24 },
+                                visible: {
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: { duration: 0.65, delay: 0.08, ease: 'easeOut' },
+                                },
+                            }}
+                        >
                             Turning Curiosity <span className="text-[#20AE63]">Into Impact</span>
-                        </span>
+                        </motion.span>
                     </motion.h1>
 
                     {/* Description */}

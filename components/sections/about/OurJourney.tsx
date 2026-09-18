@@ -4,23 +4,15 @@ import Image from "next/image";
 import {
     motion,
     useScroll,
+    useReducedMotion,
     useSpring,
     useTransform,
-    type Variants,
 } from "framer-motion";
 import { useRef } from "react";
 import { journeyItems } from "@/content/about";
 
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 28 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.65, ease: "easeOut" },
-    },
-};
-
 export default function OurJourney() {
+    const prefersReducedMotion = useReducedMotion();
     const timelineRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: timelineRef,
@@ -63,7 +55,7 @@ export default function OurJourney() {
                 </motion.h2>
 
                 <div ref={timelineRef} className="relative">
-                    <div className="absolute bottom-0 left-0 top-0 w-[32px]">
+                    <div className="absolute bottom-0 left-0 top-0 w-[32px] md:bottom-auto md:h-[1240px]">
                         <div className="absolute inset-y-0 left-[15px] w-px bg-[#B9DFC8]" />
                         <motion.div
                             className="absolute inset-0"
@@ -79,36 +71,47 @@ export default function OurJourney() {
                             />
                         </motion.div>
                     </div>
-                    <div className="absolute bottom-0 left-[195px] top-0 hidden w-px bg-[#2FA85D] md:block" />
+                    <div className="absolute bottom-0 left-[180px] top-0 hidden w-px bg-[#2FA85D] md:block" />
 
-                    <motion.div
-                        className="space-y-10 sm:space-y-12 md:space-y-16"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.15 }}
-                        variants={{
-                            hidden: {},
-                            visible: { transition: { staggerChildren: 0.16 } },
-                        }}
-                    >
-                        {journeyItems.map((item) => (
+                    <div className="space-y-10 sm:space-y-12 md:space-y-0">
+                        {journeyItems.map((item, index) => (
                             <motion.article
                                 key={item.year}
-                                className="relative grid grid-cols-[32px_1fr] gap-5 sm:grid-cols-[40px_150px_1fr] sm:gap-5 md:grid-cols-[40px_125px_1fr] md:gap-[15px]"
-                                variants={itemVariants}
+                                className={`relative grid min-h-[180px] grid-cols-[32px_105px_minmax(0,1fr)] gap-4 sm:grid-cols-[40px_150px_minmax(0,1fr)] sm:gap-5 md:grid-cols-[32px_120px_minmax(0,1fr)] md:gap-5 ${
+                                    index === journeyItems.length - 1 ? "md:min-h-0" : "md:min-h-[390px]"
+                                }`}
+                                initial={{
+                                    opacity: 0,
+                                    y: prefersReducedMotion ? 0 : 46,
+                                    scale: prefersReducedMotion ? 1 : 0.94,
+                                }}
+                                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                viewport={{
+                                    once: true,
+                                    amount: prefersReducedMotion ? 0.25 : 0.6,
+                                    margin: "-12% 0px -12% 0px",
+                                }}
                                 whileHover={{ x: 8, scale: 1.01 }}
-                                transition={{ type: "spring", stiffness: 220, damping: 22 }}
+                                transition={{
+                                    type: prefersReducedMotion ? "tween" : "spring",
+                                    stiffness: 120,
+                                    damping: 18,
+                                    mass: 0.7,
+                                    duration: prefersReducedMotion ? 0.25 : undefined,
+                                    delay: prefersReducedMotion ? 0 : index * 0.08,
+                                }}
+                                style={{ transformOrigin: "center center" }}
                             >
                                 <div aria-hidden="true" />
-                                <h3 className="pt-0.5 text-xl font-semibold  text-[#111111] sm:text-2xl">
+                                <h3 className="whitespace-nowrap pt-0.5 text-lg font-semibold text-[#111111] sm:text-2xl md:pt-0 md:text-xl">
                                     {item.year}
                                 </h3>
-                                <p className="col-start-2 text-sm font-[550] leading-6 text-[#1A202C] sm:col-start-3 sm:text-base sm:leading-7 md:pl-8">
+                                <p className="col-start-3 text-xs font-[550] leading-5 text-[#1A202C] sm:text-base sm:leading-7 md:pl-6">
                                     {item.description}
                                 </p>
                             </motion.article>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

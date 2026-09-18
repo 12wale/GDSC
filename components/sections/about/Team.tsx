@@ -27,13 +27,33 @@ export function Team() {
           'linear-gradient(110deg, rgba(194, 29, 30, 0.1) 10%, #FFFAF9 52%, rgba(250, 187, 4, 0.1) 90%)',
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header with Navigation Controls */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
-          <div>
-            <h2 className="text-[46px] font-bold text-gray-900 leading-tight">
-              Meet Our Incredible<br />
+        <div className="relative mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div
+            className="pointer-events-none absolute left-[350px] top-[-8px] hidden h-[52px] w-[48px] rotate-[10deg] bg-[#FEBF00] sm:block"
+            style={{
+              maskImage: "url('/about/illustrations/vector.svg')",
+              WebkitMaskImage: "url('/about/illustrations/vector.svg')",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+            }}
+            aria-hidden="true"
+          />
+          <Image
+            src="/home/events/events-right.svg"
+            alt=""
+            width={76.45626068115234}
+            height={121.69682312011719}
+            className="pointer-events-none absolute right-0 top-[-80px] hidden h-[121.69682312011719px] w-[76.45626068115234px] opacity-80 sm:block"
+            aria-hidden="true"
+          />
+          <div className="relative z-[1]">
+            <h2 className="text-3xl font-bold leading-tight text-gray-900 sm:text-[46px]">
+              Meet Our Top<br />Incredible {" "}
               <span className="text-gray-900 border-b-4 border-yellow-400 pb-1 inline-block">Project Team</span>
             </h2>
           </div>
@@ -100,13 +120,13 @@ export function Team() {
             {teamMembers.map((member, index) => (
               <SwiperSlide key={index} className="h-auto">
                 <div className="group mx-auto flex h-[325px] w-full max-w-[307px] flex-col overflow-hidden rounded-[18px] border border-[#E6E6E6] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(15,23,42,0.14)]">
-                  <div className="relative aspect-[1.28] w-full shrink-0 overflow-hidden bg-[#D9D9D9]">
+                  <div className="relative mx-auto h-[240px] w-full max-w-[270px] shrink-0 overflow-hidden bg-[#D9D9D9]">
                     <Image
                       src={member.image}
                       alt={member.name}
                       fill
                       sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-[center_top]"
                     />
 
                     <div className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">

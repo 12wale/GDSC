@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { FaFacebook, FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
 import { CursorFollowSvg } from '@/components/ui/CursorFollowSvg';
 
@@ -101,8 +102,35 @@ export function Footer() {
 
           {/* Quick Navigation Links */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs font-medium text-[#555555]">
-            <a href="#" className="transition-colors hover:text-[#20B15A]">About</a>
-            <a href="#events" className="transition-colors hover:text-[#20B15A]">Events</a>
+            <Link href="/" className="transition-colors hover:text-[#20B15A]">Home</Link>
+            <div className="group relative">
+              <button
+                type="button"
+                aria-haspopup="true"
+                className="inline-flex items-center gap-1 transition-colors hover:text-[#20B15A]"
+              >
+                Events
+                <span
+                  aria-hidden="true"
+                  className="text-[8px] transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+                >
+                  ▼
+                </span>
+              </button>
+              <div className="invisible absolute bottom-full left-1/2 z-10 mb-3 w-28 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                <div className="rounded-xl border border-gray-100 bg-white p-2 text-left shadow-lg">
+                  {['Test', 'Test', 'Test', 'Test'].map((item, index) => (
+                    <a
+                      key={`${item}-${index}`}
+                      href="#events"
+                      className="block rounded-lg px-3 py-2 text-xs text-gray-600 transition-colors hover:bg-[#E9F8EF] hover:text-[#20B15A]"
+                    >
+                      {item}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
             <a href="#contact" className="transition-colors hover:text-[#20B15A]">Contact Us</a>
             <a href="/about" className="transition-colors hover:text-[#20B15A]">About</a>
             <a href="#" className="transition-colors hover:text-[#20B15A]">Join Us</a>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
     return (
-        <section className="flex w-full flex-col items-center">
+        <section className="flex w-full flex-col items-center pt-[123px]">
             <AboutUs />
             <OurJourney />
             <OurAchievements />
