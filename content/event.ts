@@ -159,38 +159,38 @@ export const eventItem: EventItem[] = [
         SHOW_LATEST_GALLERY:true,
     },
     {
-        year:"2025",
+        year:"2022",
         span:"GDSC Multiverse",
         description:"was an immersive kickoff and tech exploration event organized by GDSC Fayoum University, designed around the concept of parallel universes to make discovering various tech fields more engaging and expansive for students.",
-        image:"/events/Event2025.png",
+        image:"/events/Event2022.png",
         speakers:[
             {
-                image:"/speakers/2025/Eng.Abdelhady Mohamed.jpg",
+                image:"/speakers/2022/Eng.Abdelhady Mohamed.jpg",
                 role: "Founder & Lead of GDSC Fayoum University Topic:Discovering the GDSC Ecosystem",
                 name:"Eng.Abdelhady Mohamed"
             },
             {
-                image:"/speakers/2025/Eng.Hazem Zidan.jpg",
+                image:"/speakers/2022/Eng.Hazem Zidan.jpg",
                 role: "Founder of HZ Dot · Web Developer & Coach Topic: Freelancing & Web Development",
                 name:"Eng.Hazem Zidan"
             },
             {
-                image:"/speakers/2025/Eng.Mohamed Nagy.jpg",
+                image:"/speakers/2022/Eng.Mohamed Nagy.jpg",
                 role: "Leader of GDG Cairo · Senior Technical Consultant Topic: Process Automation, Digital Transformation & Hackathons",
                 name:"Eng.Mohamed Nagy"
             },
             {
-                image:"/speakers/2025/Eng.Ahmed Nabil.jpg",
+                image:"/speakers/2022/Eng.Ahmed Nabil.jpg",
                 role: "Founder of Kotlin Egypt · Software Technical Lead at _VOIS Topic: Mobile Development & Career Growth",
                 name:"Eng.Ahmed Nabil"
             },
             {
-                image:"/speakers/2025/Eng.Mohammed Amr.jpg",
+                image:"/speakers/2022/Eng.Mohammed Amr.jpg",
                 role: "Head of Full Stack Instructors at AMIT · Founder of ITRAX Topic: Backend Development & Career Growth",
                 name:"Eng.Mohammed Amr"
             },
             {
-                image:"/speakers/2025/DR.Mostafa Kandil.jpg",
+                image:"/speakers/2022/DR.Mostafa Kandil.jpg",
                 role: "Dentist · Teaching Assistant · Content Creator Topic: Personal Development & Life Skil",
                 name:"DR.Mostafa Kandil"
             },
@@ -198,40 +198,40 @@ export const eventItem: EventItem[] = [
         whatHappen:[],
         latestGallery:[
             {
-                image:"/latestGallery/2025/image1.jpg",
+                image:"/latestGallery/2022/image1.jpg",
             },
             {
-                image:"/latestGallery/2025/image2.jpg",
+                image:"/latestGallery/2022/image2.jpg",
             },
             {
-                image:"/latestGallery/2025/image3.jpg",
+                image:"/latestGallery/2022/image3.jpg",
             },
             {
-                image:"/latestGallery/2025/image4.jpg",
+                image:"/latestGallery/2022/image4.jpg",
             },
             {
-                image:"/latestGallery/2025/image5.jpg",
+                image:"/latestGallery/2022/image5.jpg",
             },
             {
-                image:"/latestGallery/2025/image6.jpg",
+                image:"/latestGallery/2022/image6.jpg",
             },
             {
-                image:"/latestGallery/2025/image7.jpg",
+                image:"/latestGallery/2022/image7.jpg",
             },
             {
-                image:"/latestGallery/2025/image8.jpg",
+                image:"/latestGallery/2022/image8.jpg",
             },
             {
-                image:"/latestGallery/2025/image9.jpg",
+                image:"/latestGallery/2022/image9.jpg",
             },
             {
-                image:"/latestGallery/2025/image10.jpg",
+                image:"/latestGallery/2022/image10.jpg",
             },
             {
-                image:"/latestGallery/2025/image11.jpg",
+                image:"/latestGallery/2022/image11.jpg",
             },
             {
-                image:"/latestGallery/2025/image12.jpg",
+                image:"/latestGallery/2022/image12.jpg",
             },
         ],
         SHOW_TOP_SPEAKERS:true,

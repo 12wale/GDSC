@@ -23,7 +23,7 @@ export function Navbar() {
 
     const eventItemYears = [
         ...new Set(eventItem.map((event) => String(event.year))),
-    ].sort((a, b) => Number(b) - Number(a));
+    ].sort((a, b) => Number(a) - Number(b));
 
     const isEventActive = (year: string) =>
         pathname === `/event/${year}`;
